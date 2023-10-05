@@ -3,8 +3,17 @@ function moreText() {
   element.classList.toggle("more-p");
 }
 
+
+
 const pinDetails = document.getElementById("pindetails");
 
+pinDetails.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btn-details")) {
+      const cardId = event.target.dataset.cardId;
+      toggleCardBody(cardId);
+    }
+  });
+  
 const getArea = async (PIN) => {
   try {
     const response = await fetch("https://api.postalpincode.in/pincode/" + PIN);
@@ -30,22 +39,22 @@ const toggleCardBody = (cardId) => {
   }else{
     cardButtonText.textContent = "Hide Details"
   }
-  //   document
-  //     .getElementById(`main-card-${cardId}`)
-  //     .getElementsByTagName("a")[0].textContent = "Find Details";
 };
 
+
 const mainFunc = async (PIN) => {
+    console.time("Fetching")
   try {
     const area = await getArea(PIN);
-
-    if (area[0].Status == "404") {
+console.log(area)
+    if (area[0].Status == "404" || area[0].Status== "Error") {
       document.getElementById("alert").hidden = false;
       pinDetails.innerHTML = "";
     } else {
       let ihtml = "";
 
       for (let item of area[0].PostOffice) {
+        console.log(item)
         let cardId = item.Name.replace(/\s+/g, "-"); // Create a unique card ID
         ihtml += `
       <div class="col-sm-3 my-2">
@@ -57,6 +66,7 @@ const mainFunc = async (PIN) => {
 
             <div id="card-body-${cardId}" hidden>
               <p class="card-text">DeliveryStatus: ${item.DeliveryStatus}</p>
+              <p class="card-text">PINCODE: ${item.Pincode}</p>
               <p class="card-text">Block: ${item.Block}</p>
               <p class="card-text">Division: ${item.Division}</p>
               <p class="card-text">District: ${item.District}</p>
@@ -64,7 +74,9 @@ const mainFunc = async (PIN) => {
               <p class="card-text">State: ${item.State}</p>
               <p class="card-text">Country: ${item.Country}</p>
             </div>
-            <a onclick="toggleCardBody('${cardId}');" class="btn btn-outline-info">Find Details</a>
+          
+          <a data-card-id="${cardId}" class="btn btn-outline-info btn-details">Find Details</a>
+
           </div>
         </div>
       </div>`;
@@ -74,6 +86,7 @@ const mainFunc = async (PIN) => {
       pinDetails.innerHTML = ihtml;
     }
   } catch (error) {}
+  console.timeEnd("Fetching")
 };
 
 async function getValue() {
