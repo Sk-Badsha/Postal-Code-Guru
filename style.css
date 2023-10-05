@@ -1,0 +1,183 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(233, 236, 239);
+}
+
+.navbar {
+    background-color: #ecdef5;
+
+}
+
+.navbar-brand,
+.nav-link {
+    color: #62118f !important;
+}
+
+.container {
+    margin-top: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.more-p {
+    display: none;
+}
+
+.mb-5 {
+    width: 40vw;
+}
+
+.footer {
+    background-color: rgb(232 230 230);
+    padding: 30px 0px 40px 0px;
+    width: 100%;
+    float: left;
+}
+
+.footer-sect {
+    color: #262626;
+    color: #000;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.footer-sect a {
+    color: #262626;
+    ;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+}
+
+.social-icon a i {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #262626;
+    ;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.social-icon a :hover {
+    color: aqua;
+    background-color: black;
+    border: 2px solid #aaa;
+}
+
+.width-50 {
+    float: left;
+    width: 50%;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+@media (max-width: 366px) {
+    .mb-5P {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 540px) {
+    .mb-5 {
+        width: 70vw;
+
+    }
+}
+
+@media (min-width: 576px) {
+    .mb-5 {
+        width: 50vw;
+
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .mb-5 {
+        width: 40vw;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .mb-5 {
+        width: 35vw;
+
+    }
+}
+
+@media (min-width: 1200px) {
+    .mb-5 {
+        width: 28rem;
+
+    }
+}
+
+
+
+.alert {
+    text-align: center;
+    width: 400px;
+    margin-bottom: 5em;
+}
+
+.alert-heading {
+    font-size: 70px;
+}
+
+.mb-0 {
+    text-align: start;
+}
+
+
+@media (max-width: 540px) {
+    .alert {
+        width: 60vw;
+        font-size: small;
+
+    }
+
+    .alert-heading {
+        font-size: 50px;
+    }
+
+}
+
+@media (min-width: 576px) {
+    .alert {
+        width: 50vw;
+
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .alert {
+        width: 40vw;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .alert {
+        width: 35vw;
+
+    }
+}
+
+
+#typed_pin {
+    font-weight: 600;
+    font-size: larger;
+    color: #C70039;
+}

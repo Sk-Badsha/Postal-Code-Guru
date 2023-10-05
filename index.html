@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postal Code guru Application By Badsha</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand h1" href="#">Know Your PIN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="con-1">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to POSTAL API</h1>
+            <p class="lead">This is a simple hero unit, a simple API component for fetching your postal area details.
+            </p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p id="toggle-p" class="more-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit obcaecati
+                animi quisquam facere perspiciatis cupiditate iste perferendis quia ullam non consequuntur nihil ex
+                dolore nesciunt architecto laboriosam, quas pariatur maxime.
+                Consequuntur aliquid eligendi, eius ipsam suscipit facilis! Excepturi vel dolore, dolores deserunt
+                dignissimos debitis! Reprehenderit, obcaecati dignissimos neque fuga autem eius nobis illo consectetur
+                sapiente vitae, aliquam aut quam aspernatur.
+                Expedita sunt provident ratione rem delectus error quae nulla consequatur sapiente perferendis, velit
+                dolor explicabo molestias maxime magnam, fugit quia corporis, quasi sit possimus ad adipisci? Veniam
+                recusandae maxime optio.
+                Qui dicta rerum labore assumenda pariatur quas maiores dolores voluptatum dolorem fugiat voluptatibus
+                earum temporibus ratione exercitationem perspiciatis quos, eum illo corporis incidunt. Velit quod,
+                eveniet nulla quia sint quaerat?
+                Quas temporibus itaque soluta est ipsam eius, eum quod, quos praesentium, similique animi deleniti
+                magnam cum. Aspernatur laboriosam in nam sequi consectetur maiores. Cum quos consectetur laborum
+                obcaecati quasi reprehenderit.</p>
+            <a class="btn btn-primary btn-lg" role="button" onclick="moreText()">Learn more</a>
+
+        </div>
+    </div>
+    <div>
+        <div class="container d-flex justify-content-center">
+            <div class="container mx-auto mb-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i onclick="getValue()" class="fa fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Enter Your PIN to Search"
+                        onkeydown="handleEnter(event)">
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-danger container-fluid" id="alert" role="alert" hidden>
+            <h4 class="alert-heading">404</h4>
+            <p>Ooops,Seems like this PIN '<span id="typed_pin"></span>' doesn't exist.</p>
+            <hr>
+            <p class="mb-0">Sorry, We can't seem to find the page you're looking for.</p>
+        </div>
+        <div id="pindetails" class="row">
+        </div>
+        <script src="script.js"></script>
+        <!-- MDB -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <div class="footer">
+            <div class="container">
+                <div class="footer-sect social-icon width-50">
+                    <a href="https://www.linkedin.com/in/sk-badsha/">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:badshabhota@gmail.com">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/Sk-Badsha">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/badsha0700/">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="footer-sect mt-20 width-50">© 2023 Copyright: Sk Badsha, All Right Reserved
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
