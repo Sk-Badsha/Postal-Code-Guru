@@ -1,5 +1,4 @@
 function moreText() {
- 
   const element = document.getElementById("toggle-p");
   element.classList.toggle("more-p");
 }
@@ -10,34 +9,39 @@ const getArea = async (PIN) => {
   try {
     const response = await fetch("https://api.postalpincode.in/pincode/" + PIN);
     const data = await response.json();
-   
+
     return data;
   } catch (error) {
-  
     return null;
   }
 };
 
 const toggleCardBody = (cardId) => {
   const cardBody = document.getElementById(`card-body-${cardId}`);
-  document
+  const cardButtonText = document
     .getElementById(`main-card-${cardId}`)
-    .getElementsByTagName("a")[0].textContent = "Hide Details";
+    .getElementsByTagName("a")[0];
 
   if (cardBody) {
     cardBody.hidden = !cardBody.hidden;
   }
+  if(cardBody.hidden == true){
+    cardButtonText.textContent ="Find Details"
+  }else{
+    cardButtonText.textContent = "Hide Details"
+  }
+  //   document
+  //     .getElementById(`main-card-${cardId}`)
+  //     .getElementsByTagName("a")[0].textContent = "Find Details";
 };
 
 const mainFunc = async (PIN) => {
   try {
     const area = await getArea(PIN);
 
-
     if (area[0].Status == "404") {
       document.getElementById("alert").hidden = false;
       pinDetails.innerHTML = "";
-      
     } else {
       let ihtml = "";
 
@@ -69,9 +73,7 @@ const mainFunc = async (PIN) => {
       document.getElementById("alert").hidden = true;
       pinDetails.innerHTML = ihtml;
     }
-  } catch (error) {
-   
-  }
+  } catch (error) {}
 };
 
 async function getValue() {
@@ -79,7 +81,6 @@ async function getValue() {
 
   const searchValue = searchInput.value;
 
-  
   // You can perform further actions with searchValue here
   await mainFunc(searchValue);
   document.getElementById("typed_pin").textContent = searchValue;
