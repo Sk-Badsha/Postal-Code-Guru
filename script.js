@@ -3,23 +3,35 @@ function moreText() {
   element.classList.toggle("more-p");
 }
 
-
-
 const pinDetails = document.getElementById("pindetails");
 
 pinDetails.addEventListener("click", (event) => {
-    if (event.target.classList.contains("btn-details")) {
-      const cardId = event.target.dataset.cardId;
-      toggleCardBody(cardId);
-    }
-  });
-  
+  if (event.target.classList.contains("btn-details")) {
+    const cardId = event.target.dataset.cardId;
+    toggleCardBody(cardId);
+  }
+});
+
 const getArea = async (PIN) => {
   try {
-    const response = await fetch("https://api.postalpincode.in/pincode/" + PIN);
+    const baseUrl = "https://api.postalpincode.in/";
+    let url = baseUrl;
+
+    if (!isNaN(parseFloat(PIN))) {
+      url += `pincode/${PIN}`;
+    } else {
+      url += `postoffice/${PIN}`;
+    }
+    const response = await fetch(url);
+
     const data = await response.json();
 
-    return data;
+    const filteredData = data[0].PostOffice.filter((item) => {
+      return (
+        item.Name.toLowerCase() === PIN.toLowerCase() || item.Pincode === PIN
+      );
+    });
+    return filteredData;
   } catch (error) {
     return null;
   }
@@ -34,27 +46,25 @@ const toggleCardBody = (cardId) => {
   if (cardBody) {
     cardBody.hidden = !cardBody.hidden;
   }
-  if(cardBody.hidden == true){
-    cardButtonText.textContent ="Find Details"
-  }else{
-    cardButtonText.textContent = "Hide Details"
+  if (cardBody.hidden == true) {
+    cardButtonText.textContent = "Find Details";
+  } else {
+    cardButtonText.textContent = "Hide Details";
   }
 };
 
-
 const mainFunc = async (PIN) => {
-    console.time("Fetching")
+  console.time("Fetching");
   try {
     const area = await getArea(PIN);
-console.log(area)
-    if (area[0].Status == "404" || area[0].Status== "Error") {
+    if (area[0].Status == "404" || area[0].Status == "Error") {
       document.getElementById("alert").hidden = false;
       pinDetails.innerHTML = "";
     } else {
       let ihtml = "";
 
-      for (let item of area[0].PostOffice) {
-        console.log(item)
+      for (let item of area) {
+        console.log(item);
         let cardId = item.Name.replace(/\s+/g, "-"); // Create a unique card ID
         ihtml += `
       <div class="col-sm-3 my-2">
@@ -86,7 +96,7 @@ console.log(area)
       pinDetails.innerHTML = ihtml;
     }
   } catch (error) {}
-  console.timeEnd("Fetching")
+  console.timeEnd("Fetching");
 };
 
 async function getValue() {
